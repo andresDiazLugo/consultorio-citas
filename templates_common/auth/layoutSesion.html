@@ -1,0 +1,13 @@
+{% extends 'layouts/index.html' %}
+{% load static %}
+{% block content %}
+ <div class="contenedor-app">
+    <div class="img">
+        <img src="{% static 'img/imgMedico.jpg' %}"/>
+    </div>
+    <div class="app">
+        {% block sesion %}
+        {% endblock %}
+    </div>
+ </div>
+{% endblock %}

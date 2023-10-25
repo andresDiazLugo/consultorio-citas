@@ -1,0 +1,81 @@
+{% extends 'landing/layoutLanding.html'%}
+
+{% load static %}
+
+{% block landing %}
+<h1 class="nombre-pagina">Crea Un Nuevo Turno</h1>
+<p class="descripcion-pagina">Elige la especialidad medica</p>
+<p>Bienvenido {{nameUser}}</p>
+<form method="POST" action="/landing/logout/">
+    {% csrf_token %}
+    <button class="logout" type="submit">Cerrar Sesion</button>
+</form>
+<div id="app">
+    <nav class="tabs">
+        <button class="actual" type="button" data-paso="1"="">Especialidad</button>
+        <button type="button" data-paso="2"="">Informacion Turno</button>
+        <button type="button" data-paso="3"="">Resumen</button>
+
+    </nav>
+
+
+    <div id="paso-1" class="seccion">
+        <h2>Especialidad</h2>
+        <p class="text-center">ELige la especialidad a continuacion</p>
+        <div id="servicios" class="listado-servicios"></div>
+    </div>
+    <div id="paso-2" class="seccion">
+        <h2>Tus Datos y Turno</h2>
+        <p class="text-center">Coloca tus datos y el turno</p>
+        <form class="formulario">
+            {% csrf_token %}
+            <div class="campo">
+                <label for="nombre">Nombre</label>
+                <input
+                    style="background-color: antiquewhite; cursor: no-drop;"
+                    id="nombre"
+                    type="text"
+                    placeholder="Tu Nombre"
+                    value="{{nombre}}"
+                    readonly
+                />
+            </div>
+            <div class="campo">
+                <label for="nombre">Fecha</label>
+                <input
+                    id="fecha"
+                    type="date"
+                    min="{{fecha}}"
+                />
+            </div>
+            <div class="campo">
+                <label for="nombre">Hora</label>
+                <input
+                    id="hora"
+                    type="time"
+                />
+            </div>
+            <input type="hidden" id="iduser" value="{{idUser}}"/>
+
+        </form>
+    </div>
+    <div id="paso-3" class="seccion contenido-resumen">
+        <h2>Resumen</h2>
+        <p class="text-center">Verifica que la información sea correcta</p>
+    </div>
+    <div class="paginacion">
+        <button
+        id="anterior"
+        class="boton"
+        >&laquo; Anterior</button>
+        <button
+        id="siguiente"
+        class="boton"
+        >Siguiente &raquo;</button>
+
+    </div>
+
+</div>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}

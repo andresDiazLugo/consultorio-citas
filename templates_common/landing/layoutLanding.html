@@ -1,0 +1,13 @@
+{% extends 'layouts/index.html' %}
+{% load static %}
+{% block content %}
+ <div class="contenedor-app">
+    <div class="img">
+        <img loading="lazy" src="{% static 'img/citas.jpg' %}"/>
+    </div>
+    <div class="app">
+        {% block landing %}
+        {% endblock %}
+    </div>
+ </div>
+{% endblock %}

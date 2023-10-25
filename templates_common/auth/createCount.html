@@ -1,0 +1,71 @@
+{% extends 'auth/layoutSesion.html' %}
+
+{% block sesion %}
+<h1 class="nombre-pagina">Crear Cuenta</h1>
+<p class="descripcion-pagina">Llena el siguiente formulario para crear una cuenta</p>
+<form class="formulario" method="POST" action="/crear/">
+     <!-- usamos esto para poder generar un token para el formulario  -->
+    {% csrf_token %}
+    {% if not msg %}
+        {% for element in errors %}
+            <div class="errores">
+                <h4>{{element}}</h4>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="success">
+            <h4>{{msg}}</h4>
+        </div>
+    {% endif %}
+    <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input
+            type="text"
+            id="nombre"
+            placeholder="Tu Nombre"
+            name="nombre"
+        />
+    </div>
+    <div class="campo">
+        <label for="nombre">Apellido</label>
+        <input
+            type="text"
+            id="apellido"
+            placeholder="Tu Apellido"
+            name="apellido"
+        />
+    </div>
+    <div class="campo">
+        <label for="telefono">Telefono</label>
+        <input
+            type="tel"
+            id="telefono"
+            placeholder="Tu Telefono"
+            name="telefono"
+        />
+    </div>
+    <div class="campo">
+        <label for="email">Email</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Tu Email"
+            name="email"
+        />
+    </div>
+    <div class="campo">
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Tu Password"
+            name="password"
+        />
+    </div> 
+    <input type="submit" class="boton" value="Crear Cuenta">
+</form>
+<div class="acciones">
+    <a href="/">¿Ya tienes una cuenta? Inicia Sesion</a>
+    <a href="/olvide/">¿Olvidaste tu password?</a>
+</div>
+{% endblock %}

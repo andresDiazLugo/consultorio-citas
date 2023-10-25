@@ -1,0 +1,18 @@
+{% extends 'auth/layoutSesion.html' %}
+<h2>Confirmar cuenta</h2>
+{% block sesion %}
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; width: 100%;">
+    {% if not msg %}
+    <div style="width: 100%;" class="errores">
+        <h4>{{error}}</h4>
+    </div> 
+    {% else %}
+    <div style="width: 100%;" class="success">
+        <h4>{{msg}}</h4>
+    </div>
+    {% endif %}
+    <div class="acciones">
+        <a href="/">Iniciar Sesión</a>
+    </div>
+    </div>
+{% endblock %}

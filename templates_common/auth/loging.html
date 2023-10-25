@@ -1,0 +1,44 @@
+{% extends 'auth/layoutSesion.html' %}
+
+{% block sesion %}
+<h1 class="nombre-pagina">Login</h1>
+<p class="descripcion-pagina">Inicia sesión con tus datos</p>
+<form class="formulario" method="post" action="/">
+   <!-- usamos esto para poder generar un token para el formulario  -->
+    {% csrf_token %}
+    {% if not msg %}
+        {% for element in errors %}
+            <div class="errores">
+                <h4>{{element}}</h4>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="success">
+            <h4>{{msg}}</h4>
+        </div>
+    {% endif %}
+    <div class="campo">
+        <label for="email">Email</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Tu Email"
+            name="email"
+        />
+    </div>
+    <div class="campo">
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Tu Password"
+            name="password"
+        />
+    </div> 
+    <input type="submit" class="boton" value="Iniciar Sesión">
+</form>
+<div class="acciones">
+    <a href="/crear/">¿Aún no tienes una cuenta ? Crear una</a>
+    <a href="/olvide/">¿Olvidaste tu password?</a>
+</div>
+{% endblock %}

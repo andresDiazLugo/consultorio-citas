@@ -1,0 +1,30 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.contenedor-app{
+    @include m.tablet{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        height: 100vh;
+    }
+    .img{
+        img{
+            height: 100%;
+            object-fit: cover;
+        }
+        @include m.tablet{
+            img{
+                object-fit: cover;
+                height: 100vh;
+                width: 100%;
+                position: sticky;
+                top: 0;
+            }
+        }
+    }
+    .app{
+        width: 95%;
+        margin: 0 auto;
+        padding: 3rem;
+    }
+}
